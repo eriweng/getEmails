@@ -2,23 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>索取資訊表單</title>
+<title>give me ur email</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="module" src="/src/main.js"></script>
 </head>
-<body style="font-family: sans-serif; max-width: 400px; margin: auto;">
-<h2>留下資料取得資訊</h2>
+<body>
+  <div class="container">
+    <header class="bg-brand"><div class="w-[120px] pl-[0.5rem] flex justify-center object-cover">
+      <img class="w-full h-full object-fill" src="./img/KT logo-03.png" alt="KT logo"></div></header>
+      <!--banner -->
+<main class="bg-gray-500">
+  <!-- absolute wrapper -->
+  <div class="relative h-[650px] border-dotted border-2 border-red-500">
+  <!-- kt-friend logo -->
+  <div class="kt-friend-logo z-5 w-[280px] h-[150px] absolute top-[5%] left-1/2 -translate-x-1/2 ">
+    <img src="./img/KTF_LOGO.png" alt=""></div>
+  <div class="slogan z-5 w-[320px] h-[48px] absolute top-[23%] left-1/2 -translate-x-1/2 bg-red-500">slogan</div>
+  <div class="slogan z-5 w-full h-[35%] absolute bottom-0 left-1/2 -translate-x-1/2 bg-red-500">group</div>
+</div>
+</main>
+ 
+<section>
+  <div class="flex-col justify-center"><h1 class="t-title text-center text-white m:text-nowrap">
+    ⚡ LEAVE EMAIL TO GET YOUR SPECIAL DISCOUNT ⚡</h1></div>
+  <div class="steps"><div class="step"><span class="step-number">1</span><span class="step-number">Drop your email</span></div></div>
+  </section>
 
 <form id="form">
- <input id="name"  name="name"  type="text"   required minlength="2" autocomplete="name"  />
+  <div>NAME</div>
+ <input id="name"  name="name"  type="text"  placeholder="Your name"  required minlength="2" autocomplete="name"  />
+ <div>EMAIL</div>
  <input name="email" type="email" placeholder="Email" required
        autocomplete="email" inputmode="email">
+       <hr>
+  <button class="btn-primary" type="submit">Submit!</button>
   <!-- 安全：honeypot / ts / token（與 GAS 對應） -->
   <input name="hp" style="display:none" tabindex="-1" autocomplete="off"> <!-- honeypot -->
   <input type="hidden" name="ts" id="ts">     <!-- 載入時間戳（毫秒
   ） -->
   <input type="hidden" name="token" value="CHANGE_ME_MINI_TOKEN">  <!-- 與 APP_TOKEN 對應 -->
-  <button type="submit">Submit!</button>
+  
 </form>
+</div>
 </body>
 </html>

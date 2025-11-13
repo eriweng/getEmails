@@ -1,4 +1,6 @@
 // src/main.js
+import '../styles/tailwind.css';
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // 寫入 ts

@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "@fontsource/inter/variable.css"; /* 可用可變字重 */
+
+
+/* 全域：base 14px，最小 10px 的情境請用 .text-xxs */
+:root {
+  font-size: 14px;
+}
+body {
+  margin: 0 auto;
+}
+
+@layer base {
+  html, body {
+    @apply bg-slate-500 text-ink font-sans antialiased;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+/* 語義文字階層：針對三段尺寸給不同字級 */
+@layer components {
+  /* 標題 Title */
+  .t-title { @apply text-xl font-semibold tracking-tight; }
+  .t-subtitle { @apply text-lg font-medium; }
+  .t-body { @apply text-base14; }
+  .t-small { @apply text-sm14 text-muted; }
+  .t-tiny { @apply text-xxs text-muted; }
+
+  /* 針對三段尺寸調整（區間覆蓋） */
+  @media (min-width:320px) and (max-width:749px) {
+    .t-title { @apply text-lg; }        /* S: 小一號 */
+    .t-subtitle { @apply text-base14; }
+    .t-body { @apply text-sm; }         /* ≈16px -> 依需要可改成 base14 */
+  }
+  @media (min-width:750px) and (max-width:1024px) {
+    .t-title { @apply text-xl; }        /* M: 正常 */
+    .t-subtitle { @apply text-lg; }
+    .t-body { @apply text-base14; }
+  }
+  @media (min-width:1025px) and (max-width:1512px) {
+    .t-title { @apply text-2xl; }       /* L: 放大 */
+    .t-subtitle { @apply text-xl; }
+    .t-body { @apply text-sm; }         /* ≈16px，閱讀更舒適 */
+  }
+
+  /* 常用按鈕元件 */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl2 px-4 py-2 font-medium shadow-soft transition
+           focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary   { @apply btn bg-brand text-white hover:bg-brand-600 focus:ring-brand-300; }
+  .btn-accent    { @apply btn bg-accent text-white hover:bg-accent-600 focus:ring-accent; }
+  .btn-outline   { @apply btn border border-gray-300 text-ink hover:bg-gray-50; }
+  .btn-ghost     { @apply btn text-ink hover:bg-gray-100; }
+  .btn-danger    { @apply btn bg-danger text-white hover:bg-red-600 focus:ring-red-300; }
+  .btn-sm        { @apply text-sm14 px-3 py-1.5 rounded-xl; }
+  .btn-lg        { @apply text-lg px-5 py-3 rounded-xl3; }
+
+  /* Tag / Badge */
+  .badge { @apply inline-flex items-center rounded-full border px-2 py-0.5 text-xxs font-medium text-muted border-gray-300; }
+  .badge-brand { @apply badge border-transparent bg-brand/10 text-brand; }
+
+  /* 卡片 */
+  .card { @apply rounded-xl2 shadow-card bg-white border border-gray-100; }
+  .card-body { @apply p-4; }
+
+  /* 互動顏色狀態（文字/背景） */
+  .text-link { @apply text-brand hover:underline decoration-2 underline-offset-2; }
+  .bg-soft { @apply bg-gray-50; }
+}
+
+/* Tailwind 指令到此 */
