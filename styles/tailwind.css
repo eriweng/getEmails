@@ -11,7 +11,6 @@
 body {
   margin: 0 auto;
 }
-
 @layer base {
   html, body {
     @apply bg-black text-ink font-sans antialiased;
@@ -41,10 +40,16 @@ body {
   .t-subtitle { @apply text-lg; }
   .t-body { @apply text-base14; }
 }
-@media (min-width:1025px) and (max-width:1512px) {
+@media (min-width:1025px) {
   .t-title { @apply text-2xl; }
   .t-subtitle { @apply text-xl; }
   .t-body { @apply text-sm; }
+  }
+  /* 強制 l 屏幕下 container 滿版 */
+@media (min-width:1025px) {
+  .container {
+    max-width: 100% !important;
+  }
 }
   /* 圓形項目 */
    .step-item {
@@ -157,3 +162,4 @@ body {
   background: rgba(148, 163, 184, 1);
   transform: scale(1.1);
 }
+

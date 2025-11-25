@@ -7,7 +7,7 @@ export default {
     screens: {
       s: { raw: "(min-width:320px) and (max-width:685px)" }, // 320–685
       m: { raw: "(min-width:686px) and (max-width:1024px)" }, // 686–1024
-      l: { raw: "(min-width:1025px) and (max-width:1440px)" }, // 1025–1440
+      l: "1025px", // 1025px 以上都用 l
       // 有需要可額外補一個超過 1512 的 max-free 區段：
     },
 
@@ -91,7 +91,7 @@ export default {
         screens: {
           s: "100%", // 320–685
           m: "1024px", // 686–1024
-          l: "1440px", // 1025–1440
+          l: "100%", // 1025px 以上都用 l，最大寬度 100%
         },
       },
     },
