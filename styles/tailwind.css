@@ -31,21 +31,21 @@ body {
   .t-tiny { @apply text-xxs text-muted; }
 
   /* 針對三段尺寸調整（區間覆蓋） */
-  @media (min-width:320px) and (max-width:749px) {
-    .t-title { @apply text-lg; }        /* S: 小一號 */
-    .t-subtitle { @apply text-base14; }
-    .t-body { @apply text-sm; }         /* ≈16px -> 依需要可改成 base14 */
-  }
-  @media (min-width:750px) and (max-width:1024px) {
-    .t-title { @apply text-xl; }        /* M: 正常 */
-    .t-subtitle { @apply text-lg; }
-    .t-body { @apply text-base14; }
-  }
-  @media (min-width:1025px) and (max-width:1512px) {
-    .t-title { @apply text-2xl; }       /* L: 放大 */
-    .t-subtitle { @apply text-xl; }
-    .t-body { @apply text-sm; }         /* ≈16px，閱讀更舒適 */
-  }
+@media (min-width:320px) and (max-width:685px) {
+  .t-title { @apply text-lg; }
+  .t-subtitle { @apply text-base14; }
+  .t-body { @apply text-sm; }
+}
+@media (min-width:686px) and (max-width:1024px) {
+  .t-title { @apply text-xl; }
+  .t-subtitle { @apply text-lg; }
+  .t-body { @apply text-base14; }
+}
+@media (min-width:1025px) and (max-width:1512px) {
+  .t-title { @apply text-2xl; }
+  .t-subtitle { @apply text-xl; }
+  .t-body { @apply text-sm; }
+}
   /* 圓形項目 */
    .step-item {
     @apply flex flex-col items-start gap-3;
@@ -55,7 +55,7 @@ body {
   }
   /* 常用按鈕元件 */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 shadow-soft transition
+    @apply inline-flex items-center justify-center gap-2 rounded-3xl px-4 py-3 shadow-soft transition
            focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-0 opacity-100 disabled:cursor-not-allowed;
   }
   .btn-primary   { @apply btn bg-brand text-white hover:bg-brand-600 focus:ring-brand-300; }
@@ -101,9 +101,24 @@ body {
 
 /* 被判定為「中間那張」時 */
 .slide-item.is-center {
-  transform: scale(1.2);  /* 想更明顯可以改 1.1 */
+  transform: scale(1.1);  /* 想更明顯可以改 1.1 */
   z-index: 10;
+  transition: transform 0.3s;
 }
+
+.slide-item.is-center .flip-inner {
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}
+.slide-item.is-center .flip-back {
+  transform: rotateY(180deg) scale(1.1);
+  transition: transform 0.3s;
+}
+.slide-item.is-center .flip-front {
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}
+
 
 .flip-inner {
   position: relative;
@@ -141,4 +156,10 @@ body {
 .dot.active {
   background: rgba(148, 163, 184, 1);
   transform: scale(1.1);
+}
+@media (min-width:320px) and (max-width:685px) {
+  body::after { content: 'S'; position: fixed; top:0; right:0; background:yellow; }
+}
+@media (min-width:686px) and (max-width:1024px) {
+  body::after { content: 'M'; position: fixed; top:0; right:0; background:orange; }
 }
