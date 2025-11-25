@@ -8,8 +8,8 @@ export default {
   theme: {
     // 自訂三段尺寸（使用 raw，讓每段是「區間」而非最小寬）
     screens: {
-      s: { raw: "(min-width:320px) and (max-width:749px)" },     // 320–749
-      m: { raw: "(min-width:750px) and (max-width:1024px)" },    // 750–1024
+      s: { raw: "(min-width:320px) and (max-width:550px)" },     // 320–550
+      m: { raw: "(min-width:551px) and (max-width:1024px)" },    // 551–1024
       l: { raw: "(min-width:1025px) and (max-width:1512px)" },   // 1025–1512
       // 有需要可額外補一個超過 1512 的 max-free 區段：
       xlup: { raw: "(min-width:1513px)" }
@@ -81,7 +81,7 @@ export default {
         screens: {
         s: '100%',        // 320–749
         m: '750px',       // 750–1024
-        l: '1024px',      // 1025–1512
+        l: '1440px',      // 1025–1512
       },
       }
     },

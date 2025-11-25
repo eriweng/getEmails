@@ -5,44 +5,237 @@
 <title>give me ur email</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="module" src="/src/main.js"></script>
+<script type="module" src="/src/slider_controller.js"></script>
 </head>
 <body>
   <div class="container">
-    <header class="bg-brand"><div class="w-[120px] pl-[0.5rem] flex justify-center object-cover">
+    <header class="bg-brand h-[45px] flex items-center"><div class="w-[180px] pl-[1rem] flex justify-center object-cover">
       <img class="w-full h-full object-fill" src="./img/KT logo-03.png" alt="KT logo"></div></header>
       <!--banner -->
 <main class="bg-gray-500">
   <!-- absolute wrapper -->
-  <div class="relative h-[650px] border-dotted border-2 border-red-500">
+  <div class="relative h-[400px]">
   <!-- kt-friend logo -->
   <div class="kt-friend-logo z-5 w-[280px] h-[150px] absolute top-[5%] left-1/2 -translate-x-1/2 ">
     <img src="./img/KTF_LOGO.png" alt=""></div>
-  <div class="slogan z-5 w-[320px] h-[48px] absolute top-[23%] left-1/2 -translate-x-1/2 bg-red-500">slogan</div>
-  <div class="slogan z-5 w-full h-[35%] absolute bottom-0 left-1/2 -translate-x-1/2 bg-red-500">group</div>
-</div>
 </main>
  
-<section>
-  <div class="flex-col justify-center"><h1 class="t-title text-center text-white m:text-nowrap">
-    ⚡ LEAVE EMAIL TO GET YOUR SPECIAL DISCOUNT ⚡</h1></div>
-  <div class="steps"><div class="step"><span class="step-number">1</span><span class="step-number">Drop your email</span></div></div>
-  </section>
+<section class="bg-black">
+  <div class="container">
+  <div class="flex flex-col">
+    <h1 class="t-title font-bold text-center text-white m:text-nowrap">
+    ⚡ LEAVE EMAIL TO GET YOUR <br><span class="text-brand italic">SPECIAL DISCOUNT</span> ⚡</h1>
+  </div>
 
-<form id="form">
-  <div>NAME</div>
- <input id="name"  name="name"  type="text"  placeholder="Your name"  required minlength="2" autocomplete="name"  />
- <div>EMAIL</div>
- <input name="email" type="email" placeholder="Email" required
-       autocomplete="email" inputmode="email">
-       <hr>
-  <button class="btn-primary" type="submit">Submit!</button>
+     <div class="flex flex-col p-6 m:bg-green-400 m:flex-row l:flex-row m:gap-0 l:gap-0">
+       <!-- 步驟和表單平均分配，無間距 -->
+    <div class="flex flex-col gap-5 w-full m:flex-row l:flex-row m:gap-0 l:gap-0 m:mx-8 l:mx-20">
+      <div class="steps bg-brand-800 bg-opacity-10 bg-gradient-to-b from-brand-800/70 to-blue-300/20 p-6 rounded-lg 
+      m:rounded-l-lg m:rounded-r-none l:rounded-l-lg l:rounded-r-none flex-1 l:px-5 flex items-center">
+        <div class="step opacity-100 m:self-center m:flex m:items-center m:justify-center">
+          <div class="flex flex-col gap-10 text-white">
+            <div class="step-item gap-5 m:flex-row l:flex-row">
+              <div class="step-circle">1</div>
+              <p class="text-lg font-medium text-nowrap text-center">Drop your email</p>
+            </div>
+            <div class="step-item gap-5 m:flex-row l:flex-row">
+              <div class="step-circle">2</div>
+              <p class="text-lg font-medium text-nowrap text-center">Get the special discount</p>
+            </div>
+            <div class="step-item gap-5 m:flex-row l:flex-row">
+              <div class="step-circle">3</div>
+              <p class="text-yellow-500 text-lg font-medium italic text-nowrap text-center">Don’t miss out!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center items-center flex-1">
+        <form id="form" class="flex flex-col w-full h-full gap-5 px-[25px] py-[30px] rounded-lg bg-white m:rounded-r-lg m:rounded-l-none l:rounded-r-lg l:rounded-l-none">
+  <div class="name-input flex flex-col gap-3"><h6 class="text-sm font-semibold">Your Name</h6>
+<input id="name" class="border border-black rounded-xl px-5 py-3" name="name" type="text" placeholder="Your name" required minlength="2" autocomplete="name"  />
+ </div>
+ <div class="email-input flex flex-col gap-3"><h6 class="text-sm font-semibold">Your Email</h6>
+<input id="email" class="border border-black rounded-xl px-5 py-3" name="email" type="email" placeholder="Your email" required autocomplete="email" inputmode="email" />
+ </div>
+  <button class="btn-primary text-sm font-bold px-5 py-3" type="submit">SUBMIT</button>
+  <p id="close" class="self-center underline cursor-pointer font-semibold text-black hover:text-blue-600 transition">Close</p>
   <!-- 安全：honeypot / ts / token（與 GAS 對應） -->
   <input name="hp" style="display:none" tabindex="-1" autocomplete="off"> <!-- honeypot -->
   <input type="hidden" name="ts" id="ts">     <!-- 載入時間戳（毫秒
   ） -->
   <input type="hidden" name="token" value="CHANGE_ME_MINI_TOKEN">  <!-- 與 APP_TOKEN 對應 -->
-  
 </form>
+</div>
+</div>
+</div>
+  </section>
+  <section class="bg-black">
+    <div class="container">
+    <div class="flex flex-col items-center m:flex-row  l:flex-row m:gap-0 l:gap-0">
+      <h1 class="t-title text-center text-white m:text-nowrap">
+   STORIES FROM THE PROS</h1>
+   <div class="w-full">
+    <!-- Slider Wrapper：複製這整塊就能再做一個新的 slider -->
+<div class="relative w-[300px] m:w-full l:w-full mx-auto rounded-xl" data-slider>
+    <div class="absolute inset-0 pointer-events-none
+              bg-[radial-gradient(circle,transparent_70%,rgba(0,0,0,0.8)_90%)]">
+  </div>
+  <!-- Slides Track -->
+  <div class="flex w-full overflow-hidden rounded-xl">
+    <div class="flex w-full" data-slider-track>
+      <!-- Slide 1 -->
+      <div class="slide-item w-full flex-shrink-0 p-5 l:w-1/3">
+        <div class="slide-3d h-[280px]">
+          <div class="flip-inner rounded-xl shadow-lg">
+            <!-- Front -->
+            <div class="flip-face flip-front">
+              <img
+                src="https://picsum.photos/seed/1/800/600"
+                alt="Slide 1"
+                class="object-cover"/>
+            </div>
+            <!-- Back -->
+            <div class="flip-face flip-back bg-slate-900 text-white flex flex-col items-center justify-center gap-2 p-6">
+              <h3 class="text-xl font-semibold">Slide 1 Title</h3>
+              <p class="text-sm opacity-80">
+                這裡可以放產品說明、CTA 按鈕或更多文字。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide-item w-full flex-shrink-0 p-5 l:w-1/3">
+        <div class="slide-3d h-[280px]">
+          <div class="flip-inner rounded-xl shadow-lg">
+            <div class="flip-face flip-front">
+              <img
+                src="https://picsum.photos/seed/2/800/600"
+                alt="Slide 2"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="flip-face flip-back bg-blue-900 text-white flex flex-col items-center justify-center gap-2 p-6">
+              <h3 class="text-xl font-semibold">Slide 2 Title</h3>
+              <p class="text-sm opacity-80">
+                Hover 就會翻面，這一側可以做重點賣點。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="slide-item w-full flex-shrink-0 p-5 l:w-1/3">
+        <div class="slide-3d h-[280px]">
+          <div class="flip-inner rounded-xl shadow-lg">
+            <div class="flip-face flip-front">
+              <img
+                src="https://picsum.photos/seed/3/800/600"
+                alt="Slide 3"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="flip-face flip-back bg-emerald-900 text-white flex flex-col items-center justify-center gap-2 p-6">
+              <h3 class="text-xl font-semibold">Slide 3 Title</h3>
+              <p class="text-sm opacity-80">
+                需要更多 slide 就照這個結構往下複製。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+           <!-- Slide 1 -->
+      <div class="slide-item w-full flex-shrink-0 p-5 l:w-1/3">
+        <div class="slide-3d h-[280px]">
+          <div class="flip-inner rounded-xl shadow-lg">
+            <!-- Front -->
+            <div class="flip-face flip-front">
+              <img
+                src="https://picsum.photos/seed/1/800/600"
+                alt="Slide 1"
+                class="object-cover"/>
+            </div>
+            <!-- Back -->
+            <div class="flip-face flip-back bg-slate-900 text-white flex flex-col items-center justify-center gap-2 p-6">
+              <h3 class="text-xl font-semibold">Slide 1 Title</h3>
+              <p class="text-sm opacity-80">
+                這裡可以放產品說明、CTA 按鈕或更多文字。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide-item w-full flex-shrink-0 p-5 l:w-1/3">
+        <div class="slide-3d h-[280px]">
+          <div class="flip-inner rounded-xl shadow-lg">
+            <div class="flip-face flip-front">
+              <img
+                src="https://picsum.photos/seed/2/800/600"
+                alt="Slide 2"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="flip-face flip-back bg-blue-900 text-white flex flex-col items-center justify-center gap-2 p-6">
+              <h3 class="text-xl font-semibold">Slide 2 Title</h3>
+              <p class="text-sm opacity-80">
+                Hover 就會翻面，這一側可以做重點賣點。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="slide-item w-full flex-shrink-0 p-5 l:w-1/3">
+        <div class="slide-3d h-[280px]">
+          <div class="flip-inner rounded-xl shadow-lg">
+            <div class="flip-face flip-front">
+              <img
+                src="https://picsum.photos/seed/3/800/600"
+                alt="Slide 3"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="flip-face flip-back bg-emerald-900 text-white flex flex-col items-center justify-center gap-2 p-6">
+              <h3 class="text-xl font-semibold">Slide 3 Title</h3>
+              <p class="text-sm opacity-80">
+                需要更多 slide 就照這個結構往下複製。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ...更多 slide -->
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <button
+    type="button"
+    class="absolute left-1 top-1/2 -translate-y-1/2 text-white size-18 flex items-center justify-center text-[4rem]"
+    data-prev
+  >
+    ‹
+  </button>
+
+  <button
+    type="button"
+    class="absolute right-1 top-1/2 -translate-y-1/2 text-white size-18 flex items-center justify-center text-[4rem]"
+    data-next
+  >
+    ›
+  </button>
+  <!-- Dots -->
+  <!-- <div class="mt-3 flex items-center justify-center gap-2">
+    <button class="dot active" data-dot></button>
+    <button class="dot" data-dot></button>
+    <button class="dot" data-dot></button>
+  </div> -->
+</div>
+
+  </div>
+  </div>
+  </section>
 </div>
 </body>
 </html>

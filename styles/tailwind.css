@@ -14,9 +14,10 @@ body {
 
 @layer base {
   html, body {
-    @apply bg-slate-500 text-ink font-sans antialiased;
+    @apply bg-black text-ink font-sans antialiased;
     margin: 0 auto;
     padding: 0;
+    box-sizing: border-box;
   }
 }
 
@@ -45,11 +46,17 @@ body {
     .t-subtitle { @apply text-xl; }
     .t-body { @apply text-sm; }         /* ≈16px，閱讀更舒適 */
   }
-
+  /* 圓形項目 */
+   .step-item {
+    @apply flex flex-col items-start gap-3;
+  }
+  .step-circle {
+    @apply w-7 h-7 rounded-full p-2 bg-inherit border-[1px] border-white text-white flex items-center justify-center text-sm font-bold;
+  }
   /* 常用按鈕元件 */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl2 px-4 py-2 font-medium shadow-soft transition
-           focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 shadow-soft transition
+           focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-0 opacity-100 disabled:cursor-not-allowed;
   }
   .btn-primary   { @apply btn bg-brand text-white hover:bg-brand-600 focus:ring-brand-300; }
   .btn-accent    { @apply btn bg-accent text-white hover:bg-accent-600 focus:ring-accent; }
@@ -73,3 +80,65 @@ body {
 }
 
 /* Tailwind 指令到此 */
+/* .steps {
+  background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+} */
+/* ---- Slider 動畫 ---- */
+[data-slider-track] {
+  transition: transform 400ms ease;
+}
+
+/* ---- 3D Flip Card 基本設定 ---- */
+.slide-3d {
+  perspective: 1200px; /* 可調整 3D 深度 */
+}
+
+/* 每張 slide 的基本 transition */
+.slide-item {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform-origin: center center;
+}
+
+/* 被判定為「中間那張」時 */
+.slide-item.is-center {
+  transform: scale(1.2);  /* 想更明顯可以改 1.1 */
+  z-index: 10;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 400ms ease;
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Hover 時翻轉 */
+.slide-3d:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+/* ---- Dots ---- */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  background: transparent;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.dot.active {
+  background: rgba(148, 163, 184, 1);
+  transform: scale(1.1);
+}
