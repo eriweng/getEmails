@@ -157,9 +157,3 @@ body {
   background: rgba(148, 163, 184, 1);
   transform: scale(1.1);
 }
-@media (min-width:320px) and (max-width:685px) {
-  body::after { content: 'S'; position: fixed; top:0; right:0; background:yellow; }
-}
-@media (min-width:686px) and (max-width:1024px) {
-  body::after { content: 'M'; position: fixed; top:0; right:0; background:orange; }
-}

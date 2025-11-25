@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 產生 12 張卡片 slide
     const cards = Array.from({ length: 12 }, (_, i) => ({
-      front: `./img/material/選手卡_正面_${i + 1}.png`,
-      back: `./img/material/選手卡_背面_${i + 1}.png`,
+      front: `/img/material/選手卡_正面_${i + 1}.png`,
+      back: `/img/material/選手卡_背面_${i + 1}.png`,
     }));
 
     // 清空 track 並插入 slide-item
