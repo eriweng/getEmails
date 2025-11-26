@@ -5,8 +5,8 @@ export default {
   theme: {
     // 自訂三段尺寸（使用 raw，讓每段是「區間」而非最小寬）
     screens: {
-      s: { raw: "(min-width:320px) and (max-width:685px)" }, // 320–685
-      m: { raw: "(min-width:686px) and (max-width:1024px)" }, // 686–1024
+      s: { raw: "(min-width:320px) and (max-width:549px)" }, // 320–549
+      m: { raw: "(min-width:550px) and (max-width:1024px)" }, // 550–1024
       l: "1025px", // 1025px 以上都用 l
       // 有需要可額外補一個超過 1512 的 max-free 區段：
     },
@@ -89,8 +89,8 @@ export default {
         center: true,
         padding: "0",
         screens: {
-          s: "100%", // 320–685
-          m: "1024px", // 686–1024
+          s: "100%", // 320–549
+          m: "100%", // 550–1024
           l: "100%", // 1025px 以上都用 l，最大寬度 100%
         },
       },

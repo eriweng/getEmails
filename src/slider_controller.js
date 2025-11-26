@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     track.innerHTML = "";
     cards.forEach((card, idx) => {
       track.innerHTML += `
-        <div class="slide-item mx-auto flex-shrink-0 w-[300px] m:w-1/3 l:w-1/3 px-5">
+        <div class="slide-item mx-auto flex-shrink-0 w-[300px] m:w-1/3 l:w-1/3">
           <div class="slide-3d h-[300px]">
             <div class="flip-inner rounded-xl shadow-lg">
               <div class="flip-face flip-front">
@@ -55,7 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
         indices = [index];
       } else {
         // 取得畫面上要顯示的卡片 index，環狀排列
-        for (let i = -Math.floor(visible / 2); i <= Math.floor(visible / 2); i++) {
+        for (
+          let i = -Math.floor(visible / 2);
+          i <= Math.floor(visible / 2);
+          i++
+        ) {
           let idx = (index + i + slides.length) % slides.length;
           indices.push(idx);
         }
@@ -79,20 +83,24 @@ document.addEventListener("DOMContentLoaded", () => {
       if (visible === 1) {
         indices = [index];
       } else {
-        for (let i = -Math.floor(visible / 2); i <= Math.floor(visible / 2); i++) {
+        for (
+          let i = -Math.floor(visible / 2);
+          i <= Math.floor(visible / 2);
+          i++
+        ) {
           let idx = (index + i + cards.length) % cards.length;
           indices.push(idx);
         }
       }
 
       // 重新渲染 track
-      track.innerHTML = '';
+      track.innerHTML = "";
       indices.forEach((idx, i) => {
         const card = cards[idx];
         // 判斷是否為中間卡片
         const isCenter = i === Math.floor(indices.length / 2);
         track.innerHTML += `
-          <div class="slide-item mx-auto flex-shrink-0 w-[300px] m:w-1/3 l:w-1/3 px-5${isCenter ? ' is-center' : ''}">
+          <div class="slide-item mx-auto flex-shrink-0 w-[300px] m:w-1/3 l:w-1/3${isCenter ? ' is-center' : ''}">
             <div class="slide-3d h-[300px]">
               <div class="flip-inner rounded-xl shadow-lg">
                 <div class="flip-face flip-front">
@@ -113,12 +121,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 控制按鈕狀態（根據中間卡片）
       if (prevBtn) {
-        prevBtn.style.opacity = '';
-        prevBtn.style.pointerEvents = '';
+        prevBtn.style.opacity = "";
+        prevBtn.style.pointerEvents = "";
       }
       if (nextBtn) {
-        nextBtn.style.opacity = '';
-        nextBtn.style.pointerEvents = '';
+        nextBtn.style.opacity = "";
+        nextBtn.style.pointerEvents = "";
+      }
+
+      // 手機螢幕自動翻面，且移除 hover 事件
+      if (window.innerWidth < 550) {
+        autoFlipOnMobile();
+        // 移除 hover 事件
+        const slideItems = track.querySelectorAll('.slide-item .flip-inner');
+        slideItems.forEach(item => {
+          item.onmouseenter = null;
+          item.onmouseleave = null;
+        });
       }
     }
 
@@ -137,8 +156,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // RWD 重新計算
     window.addEventListener("resize", update);
+    // 手機螢幕自動翻面
+    function autoFlipOnMobile() {
+      if (window.innerWidth < 550) {
+        const slideItems = track.querySelectorAll('.slide-item .flip-inner');
+        slideItems.forEach((flipInner, i) => {
+          setTimeout(() => {
+            flipInner.classList.add('is-flipped');
+            setTimeout(() => {
+              flipInner.classList.remove('is-flipped');
+            }, 2000);
+          }, i * 2200);
+        });
+      }
+    }
 
     // 初始渲染
     update();
-  });
-});
+  }); // <-- forEach 結束
+}); // <-- DOMContentLoaded 結束

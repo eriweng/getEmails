@@ -11,7 +11,7 @@
     <!-- Promo modal (shows on page load) -->
     <div
       id="promo-modal"
-      class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50"
+      class="hidden fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center"
       aria-hidden="true"
       role="dialog"
       aria-modal="true"
@@ -27,9 +27,10 @@
           ✕
         </button>
         <h2 class="text-2xl font-bold mb-2">
-          ⚡ LEAVE EMAIL TO GET YOUR SPECIAL DISCOUNT ⚡
+          LEAVE EMAIL <br />
+          TO GET YOUR <br />
+          SPECIAL DISCOUNT
         </h2>
-        <!-- <p class="mb-4 text-sm">留下電子郵件以獲得專屬折扣。</p>   -->
         <form
           id="form"
           class="flex flex-col w-full h-full gap-5 px-[25px] py-[30px] rounded-lg bg-white m:rounded-r-lg m:rounded-l-none l:rounded-r-lg l:rounded-l-none"
@@ -60,7 +61,7 @@
               inputmode="email"
             />
           </div>
-          <button class="btn-primary text-sm font-bold px-5 py-3" type="submit">
+          <button class="btn-primary text-14 font-bold px-5 py-3" type="submit">
             SUBMIT
           </button>
           <!-- <p id="close" class="self-center underline cursor-pointer font-semibold text-black hover:text-blue-600 transition">Close</p> -->
@@ -83,7 +84,7 @@
       </div> -->
       </div>
     </div>
-    <div class="container max-w-none text-center">
+    <div class="container text-center">
       <header class="bg-brand h-[45px] flex items-center pt-2">
         <div class="w-[180px] pl-[1rem] flex justify-center object-cover">
           <img
@@ -96,101 +97,113 @@
       <!--banner -->
       <main
         id="theme"
-        class="w-full h-[700px] m:h-[480px] l:h-[380px]"
+        class="w-full h-[800px] m:h-[450px] l:h-[400px]"
         style="
           background-image: url('./img/material/賽道底圖.png');
           background-size: cover;
-          background-position: center;
+          background-position: bottom;
         "
       >
         <!-- banner character (移到上層) -->
-        <div class="z-50 relative h-full overflow-hidden">
+        <div class="z-50 w-full relative h-full overflow-hidden">
+            <!-- medium+large-screen only layout -->
           <div
-            class="z-20 h-[40%] m:hidden l:hidden"
-            style="
-              background-image: url('./img/material/賽道底圖.png');
-              background-size: cover;
-              background-position: center;
-            "
-          ></div>
-          <div
-            class="z-20 h-[60%] m:hidden l:hidden"
-            style="
-              background-image: url('./img/material/賽道底圖 1.png');
-              background-size: fill;
-              background-position: bottom;
-            "
-          ></div>
-          <div
-            class="absolute -left-8 top-[80px] flex-1 flex justify-center items-center m:-left-12 l:-left-20 l:-bottom-5"
+            class="absolute -left-10 top-[100px] flex-1 flex justify-center items-center 
+            m:-left-[65px] m:top-[60px] l:-left-20 l:bottom-5"
           >
             <img
-              class="object-fill w-[85%] m:w-[70%] l:w-[75%]"
+              class="object-fill w-[80%] m:w-[65%] l:w-[90%]"
               src="./img/material/Gilson Nunes.png"
               alt="Gilson Nunes"
             />
           </div>
-          <div
-            class="absolute -right-11 top-[100px] flex-1 flex justify-start items-center m:hidden l:hidden"
+          <div class="hidden absolute justify-center items-center
+         m:flex m:-left-6 m:bottom-[65px] l:flex l:left-24 l:bottom-2">
+              <img
+                class="object-cover w-[70%] l:w-[100%]"
+                src="./img/material/Hoang Anh Le.png"
+                alt="Hoang Anh Le"
+              />
+            </div>
+            <div class="hidden absolute justify-end items-end
+         m:flex m:-right-8 m:top-[65px] l:flex l:right-0 l:bottom-5">
+              <img
+                class="object-cover w-[60%] l:w-[85%]"
+                src="./img/material/ALs.png"
+                alt="ALs"
+              />
+            </div>
+             <div
+            class="hidden absolute -right-24 bottom-[75px] flex-1 justify-start items-center
+            m:flex l:flex l:bottom-5 l:right-[50px]"
           >
             <img
-              class="object-fill w-[90%] m:w-[70%]"
+              class="object-fill w-[70%] l:w-[100%]"
+              src="./img/material/Roberto.png"
+              alt="Roberto"
+            />
+          </div>
+            <div
+            class="absolute -right-28 top-[110px] flex-1 flex justify-start items-center m:hidden l:hidden"
+          >
+            <img
+              class="object-fill w-[70%]"
               src="./img/material/Paulo.png"
               alt="Paulo"
             />
           </div>
+            <!-- small-screen layout only -->
+          <div
+            class="absolute w-full h-[40%] bottom-3 flex justify-around items-start my-8 m:hidden l:hidden"
+          >
+            <div class="flex-1 flex justify-start -ml-10 items-end">
+              <img
+                class="object-cover max-w-[96%] m:w-[80%] l:w-[85%]"
+                src="./img/material/Hoang Anh Le.png"
+                alt="Hoang Anh Le"
+              />
+            </div>
+            <div class="flex-1 flex justify-end -mr-8 items-end">
+              <img
+                class="object-cover max-w-[100%] m:w-[70%] l:w-[75%]"
+                src="./img/material/ALs.png"
+                alt="ALs"
+              />
+            </div>
+            <!-- small-screen layout only Roberto -->
+            <div
+              class="absolute z-50 -bottom-2 flex justify-center items-center m:hidden l:hidden"
+            >
+              <img
+                class="object-cover w-[98%]"
+                src="./img/material/Roberto.png"
+                alt="Roberto"
+              />
+            </div>
+          </div>
           <!-- kt-friend logo -->
           <div
-            class="kt-friend-logo z-100 absolute top-[200px] left-1/2 -translate-x-1/2 w-full flex flex-col justify-center items-center
-             m:top-0 l:top-0"
+            class="kt-friend-logo z-100 absolute h-[18%] top-[250px] left-1/2 -translate-x-1/2 w-full flex flex-col justify-center items-center
+             m:top-[120px] l:top-[110px]"
           >
             <img
-              class="object-fill scale-90 m:scale-[60%] l:scale-[70%]"
+              class="object-fill scale-90 m:scale-[60%] l:scale-[75%]"
               src="./img/material/KTF_LOGO_S4.png"
               alt=""
             />
             <img
-              class="object-fill scale-[60%] -left-1/2 ml-5 m:hidden l:flex l:-mt-11"
+              class="object-fill -mt-2 scale-[68%] -left-1/2 ml-5 m:hidden l:flex l:-mt-[25px]"
               src="./img/material/see what the true PROs_1.png"
               alt=""
             />
             <img
-              class="hidden m:flex object-fill -left-1/2 ml-5 -mt-5 scale-[90%]"
+              class="hidden m:flex object-fill -left-1/2 ml-5 -mt-14 scale-[80%]"
               src="./img/material/see what the true PROs_2.png"
               alt=""
             />
           </div>
           <div
-            class="absolute z-50 -left-10 bottom-1 flex-1 flex justify-start items-center 
-            m:left-14 m:bottom-6 l:left-24 l:-bottom-4"
-          >
-            <img
-              class="object-fill w-[90%] m:w-[80%] l:w-[85%]"
-              src="./img/material/Hoang Anh Le.png"
-              alt="Hoang Anh Le"
-            />
-          </div>
-          <div
-            class="absolute z-50 -right-10 bottom-1 flex-1 flex justify-center items-center 
-            m:-right-16 m:-top-12 l:-right-16 l:bottom-2"
-          >
-            <img
-              class="object-fill w-[90%] m:w-[70%] l:w-[75%]"
-              src="./img/material/ALs.png"
-              alt="ALs"
-            />
-          </div>
-          <div
-            class="hidden m:flex l:flex absolute z-50 flex-1 justify-center items-center right-0 bottom-6 l:right-6 l:bottom-6"
-          >
-            <img
-              class="object-fill w-[90%] m:block m:w-[73%] l:block l:w-[80%]"
-              src="./img/material/Roberto.png"
-              alt="Roberto"
-            />
-          </div>
-          <div
-            class="absolute z-50 w-full h-[30%] left-0 top-[80%] pointer-events-none m:h-[80%] m:top-[50%]"
+            class="absolute z-50 w-full h-[30%] left-0 top-[80%] pointer-events-none m:h-[80%] m:top-[60%]"
             style="
               background: linear-gradient(
                 to bottom,
@@ -227,23 +240,32 @@
           <div class="w-full flex justify-center mb-5 z-10 m:hidden l:hidden">
             <img src="./img/material/leave your email_1.png" alt="" />
           </div>
-          <div class="hidden m:flex w-full justify-center mb-5 z-10 l:flex l:mt-5">
-            <img class="l:scale-75" src="./img/material/leave your email_2.png" alt="" />
+          <div
+            class="hidden m:flex m:scale-[80%] w-full justify-center mb-5 z-10 l:flex l:scale-[80%] l:mt-8"
+          >
+            <img
+              class=""
+              src="./img/material/leave your email_2.png"
+              alt=""
+            />
           </div>
           <div
-            class="z-50 flex flex-col justify-center items-center m:flex-row l:flex-row m:gap-0 l:gap-0"
+            class="z-50 flex flex-col justify-center items-center m:flex-row l:flex-row"
           >
             <!-- steps + form -->
-            <div class="flex flex-col w-full m:gap-0 l:gap-0 l:flex-row l:justify-center l:w-[70%]">
+            <div
+              class="flex flex-col w-full m:gap-0 l:gap-2 l:flex-row l:justify-around l:w-[75%] l:items-center"
+            >
               <div
                 class="step flex opacity-100 self-center items-center justify-center"
               >
                 <div
-                  class="flex flex-col gap-2 text-white items-start text-left m:flex-row m:gap-1 l:gap-16"
+                  class="flex flex-col gap-2 text-white items-start text-left 
+                  m:flex-row m:gap-1 m:justify-center m:items-start l:gap-16 m:scale-90"
                 >
-                  <div class="step-item gap-3 flex-row ml-0 m:gap-2 m:p-1">
+                  <div class="step-item gap-2 flex-row ml-0 m:gap-2 m:p-1">
                     <div
-                      class="step-circle text-md w-7 h-7 border-2 border-white rounded-full flex items-center justify-center font-bold"
+                      class="step-circle text-md w-7 h-7 border-white rounded-full flex items-center justify-center font-bold"
                     >
                       1
                     </div>
@@ -255,7 +277,7 @@
                     class="step-item gap-2 flex-row ml-16 m:m-0 m:gap-2 m:p-1 l:m-0"
                   >
                     <div
-                      class="step-circle text-md w-7 h-7 border-2 border-white rounded-full flex items-center justify-center font-bold"
+                      class="step-circle text-md w-7 h-7 border-white rounded-full flex items-center justify-center font-bold"
                     >
                       2
                     </div>
@@ -267,7 +289,7 @@
                     class="step-item gap-3 flex-row ml-32 m:m-0 m:gap-2 m:p-1 l:m-0"
                   >
                     <div
-                      class="step-circle text-md w-7 h-7 border-2 border-white rounded-full flex items-center justify-center font-bold"
+                      class="step-circle text-md w-7 h-7 border-white rounded-full flex items-center justify-center font-bold"
                     >
                       3
                     </div>
@@ -275,7 +297,9 @@
                       class="text-yellow-400 text-lg font-medium text-nowrap m:flex m:flex-col"
                     >
                       don't miss out!
-                      <span class="text-white text-sm font-normal text-nowrap m:text-wrap">
+                      <span
+                        class="text-white text-sm font-normal text-nowrap m:text-wrap"
+                      >
                         <br class="m:hidden" />
                         <a
                           class="ml-3 pointer-events-auto underline m:m-0 l:m-0"
@@ -288,10 +312,13 @@
                   </div>
                 </div>
               </div>
-              <div class="flex mx-10 mt-10 justify-center items-center m:mx-40 l:mr-0 l:ml-4 l:flex-1">
+              <div
+                class="flex mx-2 mt-10 justify-center items-center m:mx-40 "
+              >
                 <form
                   id="form2"
-                  class="flex flex-col w-full h-full gap-5 px-[30px] py-[40px] text-white rounded-3xl"
+                  class="flex flex-col w-full h-full gap-5 px-[50px] py-[40px] text-white rounded-3xl 
+                  m:px-[25px] m:min-w-[370px] m:max-w-[400px] l:w-[400px]"
                   style="
                     background: linear-gradient(
                       to bottom,
@@ -327,7 +354,7 @@
                     />
                   </div>
                   <button
-                    class="btn-primary w-[40%] mt-5 self-center text-sm font-bold px-5 py-3"
+                    class="btn-primary w-full m:w-[50%] mt-5 self-center text-sm font-bold m:px-5 m:py-3"
                     type="submit"
                   >
                     SUBMIT
@@ -356,29 +383,29 @@
           </div>
         </div>
       </section>
-      <section id="slider" class="bg-black p-5">
-        <div class="container max-w-none">
+      <section id="slider" class="py-20 m:py-10 l:py-10 l:px-20 ">
+        <div class="container">
           <div
-            class="flex flex-col items-center l:flex-row m:gap-0 l:gap-0"
+            class="flex flex-col items-center justify-center px-10 mb-5 l:flex-row l:-gap-5" 
           >
             <img
-              class="m:hidden l:hidden"
+              class="scale-[80%] m:hidden l:hidden"
               src="./img/material/PROs_3.png"
               alt=""
             />
             <img
-              class="hidden scale-75 m:flex"
+              class="hidden scale-75 -mr-10 m:flex"
               src="./img/material/PROs_2.png"
               alt=""
             />
             <img
-              class="hidden scale-90 l:flex"
+              class="hidden scale-[75%] l:flex l:-mr-8"
               src="./img/material/PROs_1.png"
               alt=""
             />
             <!-- Slider Wrapper：複製這整塊就能再做一個新的 slider -->
             <div
-              class="relative w-[300px] m:border-red-600 m:w-full l:w-full mx-auto rounded-x"
+              class="relative w-full h-[400px] m:w-full l:w-[50%] l:max-h-[500px] mx-auto rounded-xl"
               data-slider
             >
               <!-- 圓形遮罩：中間透明，四周黑色 -->
@@ -393,8 +420,13 @@
                 "
               ></div>
               <!-- Slides Track -->
-              <div class="flex w-full overflow-hidden rounded-xl">
-                <div class="flex w-full" data-slider-track>
+              <div
+                class="flex w-full h-full justify-center items-center overflow-hidden"
+              >
+                <div
+                  class="flex w-[500px] h-full justify-center items-center gap-x-2 m:w-full m:h-[550px] l:w-full l:h-[600px]"
+                  data-slider-track
+                >
                   <!-- JS 產生卡片 slide -->
                 </div>
               </div>
@@ -402,7 +434,8 @@
               <!-- Controls -->
               <button
                 type="button"
-                class="absolute left-1 top-1/2 -translate-y-1/2 text-white size-18 flex items-center justify-center text-[4rem] z-50"
+                class="absolute left-2 top-1/2 -translate-y-1/2 l:-left-4
+                text-white size-18 flex items-center justify-center text-[4rem] z-50"
                 data-prev
               >
                 ‹
@@ -410,7 +443,8 @@
 
               <button
                 type="button"
-                class="absolute right-1 top-1/2 -translate-y-1/2 text-white size-18 flex items-center justify-center text-[4rem] z-50"
+                class="absolute right-2 top-1/2 -translate-y-1/2 l:-right-4
+                text-white size-18 flex items-center justify-center text-[4rem] z-50"
                 data-next
               >
                 ›
@@ -427,19 +461,19 @@
       </section>
       <section
         id="video"
-        class="bg-gray-100 p-5"
+        class="bg-gray-100 px-10 py-28"
         style="
           background-image: url('./img/material/鐵板質感.png');
           background-size: cover;
           background-position: center;
         "
       >
-        <div class="container max-w-none">
+        <div class="container">
           <div
-            class="video-wrapper flex justify-center items-center w-full h-[350px]"
+            class="video-wrapper flex gap-[60px] items-center w-full h-[250px] m:h-[350px] l:h-[400px] l:px-20"
           >
             <iframe
-              class="w-full h-full object-cover scale-75"
+              class="flex-1 min-w-0 w-full h-full object-contain"
               src="https://www.youtube.com/embed/4DXlSrHabJk?si=Hd7YIoRBgtn90kaz"
               title="YouTube video player"
               frameborder="0"
@@ -447,23 +481,33 @@
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
             ></iframe>
-            <iframe class="hidden l:flex w-full h-full object-cover scale-75" src="https://www.youtube.com/embed/jCDumxSo3Ss?si=anssYQ9H-UMOgEeI" 
-            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe
+              class="hidden flex-1 min-w-0 w-full h-full object-contain m:flex l:flex"
+              src="https://www.youtube.com/embed/jCDumxSo3Ss?si=anssYQ9H-UMOgEeI"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
       </section>
-      <footer class="p-5">
+      <footer class="p-5 my-10">
         <div
           class="container max-w-none flex flex-col text-white items-center text-center gap-4"
         >
-          <h2 class="t-title font-semibold">
-            ⚡ Follow King Tony Your Best Tool Guys ⚡
+          <h2 class="t-subtitle font-semibold">
+            ⚡ Follow <span class="text-brand">KING TONY</span> Your Best Tool Guys ⚡
           </h2>
           <div
             class="social-links flex flex-col gap-5 items-start justify-center mt-5"
           >
             <div class="ig flex items-center justify-center">
-              <a href="https://www.instagram.com/kingtonytools/"
+              <a
+                href="https://www.instagram.com/kingtonytools/"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><img
                   class="inline-block w-[12%] mr-2"
                   src="./img/instagram.png"
@@ -475,7 +519,10 @@
               >
             </div>
             <div class="fb flex items-center justify-center">
-              <a href="https://www.facebook.com/KingTonyTool/"
+              <a
+                href="https://www.facebook.com/KingTonyTool/"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><img
                   class="inline-block w-[12%] mr-2"
                   src="./img/facebook.png"
@@ -487,7 +534,10 @@
               >
             </div>
             <div class="yt flex items-center justify-center">
-              <a href="https://www.youtube.com/@KINGTONYtool"
+              <a
+                href="https://www.youtube.com/@KINGTONYtool"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><img
                   class="inline-block w-[12%] mr-2"
                   src="./img/youtube.png"

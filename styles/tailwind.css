@@ -10,6 +10,7 @@
 }
 body {
   margin: 0 auto;
+  max-width: 1440px;
 }
 @layer base {
   html, body {
@@ -30,12 +31,12 @@ body {
   .t-tiny { @apply text-xxs text-muted; }
 
   /* 針對三段尺寸調整（區間覆蓋） */
-@media (min-width:320px) and (max-width:685px) {
-  .t-title { @apply text-lg; }
+@media (min-width:320px) and (max-width:650px) {
+  .t-title { @apply text-md; }
   .t-subtitle { @apply text-base14; }
   .t-body { @apply text-sm; }
 }
-@media (min-width:686px) and (max-width:1024px) {
+@media (min-width:651px) and (max-width:1024px) {
   .t-title { @apply text-xl; }
   .t-subtitle { @apply text-lg; }
   .t-body { @apply text-base14; }
@@ -95,36 +96,40 @@ body {
 
 /* ---- 3D Flip Card 基本設定 ---- */
 .slide-3d {
-  perspective: 1200px; /* 可調整 3D 深度 */
+  /* 拉遠 perspective 讓 3D 感更明顯 */
+  perspective: 1600px;
 }
 
-/* 每張 slide 的基本 transition */
+/* 每張 slide 的基本 transition；同時讓卡片本身略大 */
 .slide-item {
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition: transform 0.35s ease, opacity 0.35s ease;
   transform-origin: center center;
+  /* 讓每張卡片在軌道上預設更寬一些；可依需要調整 */
+
 }
 
-/* 被判定為「中間那張」時 */
+/* 被判定為「中間那張」時 — 放大以凸顯 */
 .slide-item.is-center {
-  transform: scale(1.1);  /* 想更明顯可以改 1.1 */
-  z-index: 10;
-  transition: transform 0.3s;
+  transform: scale(1.2);
+  z-index: 20;
+  transition: transform 0.25s ease;
 }
 
 .slide-item.is-center .flip-inner {
-  transform: scale(1.1);
-  transition: transform 0.3s;
+  transform: scale(1.2);
+  transition: transform 0.25s ease;
 }
 .slide-item.is-center .flip-back {
-  transform: rotateY(180deg) scale(1.1);
-  transition: transform 0.3s;
+  transform: rotateY(180deg) scale(1.2);
+  transition: transform 0.25s ease;
 }
 .slide-item.is-center .flip-front {
-  transform: scale(1.1);
-  transition: transform 0.3s;
+  transform: scale(1.2);
+  transition: transform 0.25s ease;
+
 }
 
-
+/* flip-inner: preserve 3D and manage flipping transition */
 .flip-inner {
   position: relative;
   width: 100%;
@@ -143,8 +148,17 @@ body {
   transform: rotateY(180deg);
 }
 
-/* Hover 時翻轉 */
+/* Hover 時翻轉：讓翻面和整體放大更明顯（互動回饋） */
 .slide-3d:hover .flip-inner {
+  transform: rotateY(180deg) scale(1.4);
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.flip-back {
   transform: rotateY(180deg);
 }
 
