@@ -1,3 +1,8 @@
+/* 點擊翻面時只用 3D transform 與 backface-visibility 控制正背面顯示 */
+/* 點擊翻面：手機螢幕下用 is-flipped class 觸發 3D 翻面動畫 */
+.flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -115,18 +120,19 @@ body {
   transition: transform 0.25s ease;
 }
 
+/* 中間那張放大，但不能覆蓋 rotateY */
 .slide-item.is-center .flip-inner {
-  transform: scale(1.2);
-  transition: transform 0.25s ease;
+  transform: scale(1.2) rotateY(var(--flip-rotate, 0deg));
 }
-.slide-item.is-center .flip-back {
-  transform: rotateY(180deg) scale(1.2);
-  transition: transform 0.25s ease;
-}
-.slide-item.is-center .flip-front {
-  transform: scale(1.2);
-  transition: transform 0.25s ease;
 
+/* 正面 */
+.slide-item.is-center .flip-front {
+  transform: scale(1.2) rotateY(0deg);
+}
+
+/* 背面 */
+.slide-item.is-center .flip-back {
+  transform: scale(1.3) rotateY(180deg);
 }
 
 /* flip-inner: preserve 3D and manage flipping transition */
@@ -144,24 +150,29 @@ body {
   backface-visibility: hidden;
 }
 
-.flip-back {
-  transform: rotateY(180deg);
-}
-
-/* Hover 時翻轉：讓翻面和整體放大更明顯（互動回饋） */
-.slide-3d:hover .flip-inner {
-  transform: rotateY(180deg) scale(1.4);
-}
-.flip-face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-}
 
 .flip-back {
   transform: rotateY(180deg);
 }
 
+/* 手機：點擊翻面，用 is-flipped class 觸發 */
+@media (max-width: 549px) {
+  .flip-inner {
+    cursor: pointer;
+  }
+
+  .flip-inner.is-flipped {
+    --flip-rotate: 180deg;
+    transform: scale(1.4) rotateY(180deg);
+  }
+}
+
+/* 桌機 / 大平板：hover 時翻轉＋放大（有滑鼠的裝置才啟動） */
+@media (hover: hover) and (pointer: fine) and (min-width: 550px) {
+  .slide-3d:hover .flip-inner {
+    transform: rotateY(180deg) scale(1.4);
+  }
+}
 /* ---- Dots ---- */
 .dot {
   width: 10px;
