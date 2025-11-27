@@ -129,25 +129,14 @@ document.addEventListener("DOMContentLoaded", () => {
         nextBtn.style.pointerEvents = "";
       }
 
-      // 手機螢幕：移除 hover，改用點擊翻面
+      // 手機螢幕自動翻面，且移除 hover 事件
       if (window.innerWidth < 550) {
+        autoFlipOnMobile();
+        // 移除 hover 事件
         const slideItems = track.querySelectorAll('.slide-item .flip-inner');
         slideItems.forEach(item => {
-          // 移除 hover 事件
           item.onmouseenter = null;
           item.onmouseleave = null;
-          // 移除舊的點擊事件
-          item.onclick = null;
-          // 狀態：是否已翻面
-          let flipped = false;
-          item.addEventListener('click', function handler(e) {
-            flipped = !flipped;
-            if (flipped) {
-              item.style.transform = 'rotateY(180deg) scale(1.4)';
-            } else {
-              item.style.transform = 'scale(1)';
-            }
-          });
         });
       }
     }
@@ -167,6 +156,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // RWD 重新計算
     window.addEventListener("resize", update);
+    // 手機螢幕自動翻面
+    function autoFlipOnMobile() {
+      if (window.innerWidth < 550) {
+        const centerCard = track.querySelector('.slide-item.is-center .flip-inner');
+        if (centerCard) {
+          setTimeout(() => {
+            centerCard.classList.add('is-flipped');
+          }, 2000);
+        }
+      }
+    }
 
     // 初始渲染
     update();

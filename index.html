@@ -11,7 +11,7 @@
     <!-- Promo modal (shows on page load) -->
     <div
       id="promo-modal"
-      class="fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center"
+      class=" fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center"
       aria-hidden="true"
       role="dialog"
       aria-modal="true"
@@ -99,20 +99,20 @@
         id="theme"
         class="w-full h-[800px] m:h-[450px] l:h-[400px]"
         style="
-          background-image: url('./img/material/賽道底圖.png');
+          background-image: url('./img/material/賽道背景.png');
           background-size: cover;
-          background-position: bottom;
+          background-position: center;
         "
       >
         <!-- banner character (移到上層) -->
         <div class="z-50 w-full relative h-full overflow-hidden">
             <!-- medium+large-screen only layout -->
           <div
-            class="absolute -left-10 top-[100px] flex-1 flex justify-center items-center 
-            m:-left-[65px] m:top-[60px] l:-left-20 l:bottom-5"
+            class="absolute -left-8 top-[100px] flex-1 flex justify-center items-center 
+            m:-left-[65px] m:top-[50px] l:-left-20 l:bottom-5"
           >
             <img
-              class="object-fill w-[80%] m:w-[65%] l:w-[90%]"
+              class="object-fill w-[95%] m:w-[65%] l:w-[90%]"
               src="./img/material/Gilson Nunes.png"
               alt="Gilson Nunes"
             />
@@ -144,10 +144,10 @@
             />
           </div>
             <div
-            class="absolute -right-28 top-[110px] flex-1 flex justify-start items-center m:hidden l:hidden"
+            class="absolute -right-[80px] top-[110px] flex-1 flex justify-start items-center m:hidden l:hidden"
           >
             <img
-              class="object-fill w-[70%]"
+              class="object-fill w-[90%]"
               src="./img/material/Paulo.png"
               alt="Paulo"
             />
@@ -393,6 +393,7 @@
               src="./img/material/PROs_3.png"
               alt=""
             />
+            <p class="w-full h-full text-lg font-semibold text-white mt-3 m:hidden l:hidden"> Click! <br> &darr;</p>
             <img
               class="hidden scale-75 -mr-10 m:flex"
               src="./img/material/PROs_2.png"
