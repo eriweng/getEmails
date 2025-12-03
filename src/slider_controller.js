@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     class="slide-img-front w-full h-full scale-[70%] object-contain" 
                     src="" 
                     alt="Slide front"
+                    loading="lazy"
                   />
                 </div>
                 <div class="flip-face flip-back flex flex-col items-center justify-center gap-2 p-6">
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     class="slide-img-back w-full h-full scale-[70%] object-contain" 
                     src="" 
                     alt="Slide back"
+                    loading="lazy"
                   />
                 </div>
               </div>
