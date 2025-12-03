@@ -3,15 +3,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 定義每個 slider 的卡片資料
   const sliderCardSets = [
-    // 第一個 slider
+    // 第一個 slider：S3
     Array.from({ length: 12 }, (_, i) => ({
-      front: `/img/material/選手卡_正面_${i + 1}.png`,
-      back: `/img/material/選手卡_背面_${i + 1}.png`,
+      front: `/img/material2/選手卡_正面_${i + 1}.png`,
+      back: `/img/material2/選手卡_背面_${i + 1}.png`,
     })),
-    // 第二個 slider（請根據你的新卡片路徑修改）
+    // 第二個 slider：S4（新卡片）
     Array.from({ length: 15 }, (_, i) => ({
-      front: `/img/material/新卡_正面_${i + 1}.png`,
-      back: `/img/material/新卡_背面_${i + 1}.png`,
+      front: `/img/material2/新卡_正面_${i + 1}.png`,
+      back: `/img/material2/新卡_背面_${i + 1}.png`,
     })),
   ];
 
@@ -23,13 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // 取得對應的卡片資料
     const cards = sliderCardSets[sliderIdx] || sliderCardSets[0];
 
-    // ✅ 預先載入圖片，減少第一次看到的閃動
-    cards.forEach((card) => {
-      const f = new Image();
-      f.src = card.front;
-      const b = new Image();
-      b.src = card.back;
-    });
+    // ❌【已拿掉】一次預載所有卡片，這會讓每個訪客一進站就下載全部圖片
+    // cards.forEach((card) => {
+    //   const f = new Image();
+    //   f.src = card.front;
+    //   const b = new Image();
+    //   b.src = card.back;
+    // });
 
     let index = 0;
 
@@ -75,11 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function update() {
       const visible = getVisibleCount();
       const maxIndex = cards.length - 1;
+
       if (index < 0) index = maxIndex;
       if (index > maxIndex) index = 0;
+
+      // 視窗寬度改變時，重新產生對應張數的 slide
       if (track.children.length !== visible) {
         buildSlides(visible);
       }
+
       let indices = [];
       if (visible === 1) {
         indices = [index];
@@ -93,23 +97,37 @@ document.addEventListener("DOMContentLoaded", () => {
           indices.push(idx);
         }
       }
+
       const slideItems = track.querySelectorAll(".slide-item");
+
       slideItems.forEach((slideEl, i) => {
         const cardIdx = indices[i];
         const card = cards[cardIdx];
         const frontImg = slideEl.querySelector(".slide-img-front");
         const backImg = slideEl.querySelector(".slide-img-back");
         const flipInner = slideEl.querySelector(".flip-inner");
-        if (frontImg && backImg) {
-          frontImg.src = card.front;
-          backImg.src = card.back;
+
+        // ⭐ 只在需要顯示時，才設定圖片 src
+        if (frontImg && backImg && card) {
+          if (frontImg.src !== location.origin + card.front) {
+            frontImg.src = card.front;
+          }
+          if (backImg.src !== location.origin + card.back) {
+            backImg.src = card.back;
+          }
           frontImg.alt = `Slide ${cardIdx + 1} front`;
           backImg.alt = `Slide ${cardIdx + 1} back`;
         }
+
         const isCenter = i === Math.floor(indices.length / 2);
         slideEl.classList.toggle("is-center", isCenter);
-        flipInner.classList.remove("is-flipped");
+
+        // 每次切換卡片時，把翻面狀態重置
+        if (flipInner) {
+          flipInner.classList.remove("is-flipped");
+        }
       });
+
       if (prevBtn) {
         prevBtn.style.opacity = "";
         prevBtn.style.pointerEvents = "";
@@ -120,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    // 手機版點擊翻面
     track.addEventListener("click", (e) => {
       if (window.innerWidth >= 550) return;
       const flipInner = e.target.closest(".flip-inner");
@@ -131,11 +150,15 @@ document.addEventListener("DOMContentLoaded", () => {
       index -= 1;
       update();
     });
+
     nextBtn?.addEventListener("click", () => {
       index += 1;
       update();
     });
+
     window.addEventListener("resize", update);
+
+    // 初始化
     update();
   });
 }); // DOMContentLoaded 結束
