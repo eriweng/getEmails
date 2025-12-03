@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const sliderCardSets = [
     // 第一個 slider：S3
     Array.from({ length: 12 }, (_, i) => ({
-      front: `/img/material2/選手卡_正面_${i + 1}.png`,
-      back: `/img/material2/選手卡_背面_${i + 1}.png`,
+      front: `/img/material3/AnyConv.com__選手卡_正面_${i + 1}.webp`,
+      back: `/img/material3/AnyConv.com__選手卡_背面_${i + 1}.webp`,
     })),
     // 第二個 slider：S4（新卡片）
     Array.from({ length: 15 }, (_, i) => ({
-      front: `/img/material2/新卡_正面_${i + 1}.png`,
-      back: `/img/material2/新卡_背面_${i + 1}.png`,
+      front: `/img/material3/AnyConv.com__新卡_正面_${i + 1}.webp`,
+      back: `/img/material3/AnyConv.com__新卡_背面_${i + 1}.webp`,
     })),
   ];
 
