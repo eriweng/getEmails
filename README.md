@@ -86,9 +86,3 @@ npm run dev
 ## 🤝 貢獻者
 
 * **KT-eri** ([GitHub Profile](https://www.google.com/search?q=https://github.com/KT-eri))
-
----
-
-### 需要我進一步幫你優化嗎？
-
-目前的 README 已經準確描述了你的專案本質。如果你之後需要調整 **Google Apps Script (GAS)** 的接收邏輯，或是想在網頁中加入 **Google Analytics** 追蹤提交成功率，隨時跟我說！
